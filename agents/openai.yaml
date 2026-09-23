@@ -1,0 +1,7 @@
+interface:
+  display_name: "文风DNA (StyleDNA)"
+  short_description: "蒸馏文章语料，生成可复用的文风DNA与认知框架"
+  default_prompt: "Use $style-dna-skill to distill my article corpus into Writing-DNA.md."
+
+policy:
+  allow_implicit_invocation: true
