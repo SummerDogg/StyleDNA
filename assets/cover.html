@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StyleDNA — Editorial Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #fafbfc;
+    --paper-2: #f3f5f8;
+    --ink: #2b3038;
+    --ink-2: #5c6570;
+    --ink-3: #8a93a0;
+    --hairline: rgba(20,22,28,0.12);
+    --accent: #5b5f9e;      /* ink blue */
+    --accent-gold: #8a6d1e;
+    --em: rgba(110,86,48,0.92); /* warm brown italic */
+    --dot: rgba(20,22,28,0.035);
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-font-smoothing: antialiased; background: var(--paper); color: var(--ink); }
+
+  /* 纸张点阵颗粒：1px 圆点，3px 间距，极淡透明度 */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 3px 3px; background-repeat: repeat; z-index: 0;
+  }
+
+  /* 16:10 比例 (1600 × 1000) */
+  .poster {
+    position: relative; width: 1600px; height: 1000px;
+    background: var(--paper); color: var(--ink); overflow: hidden; padding: 0;
+  }
+
+  .pad {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; flex-direction: column; padding: 88px 96px 72px 96px;
+  }
+
+  /* 顶部眉题与系统编号 */
+  .top-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--hairline); padding-bottom: 18px;
+  }
+  .rubric {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.36em; color: var(--ink-3);
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.22em; color: var(--accent);
+    padding: 3px 8px; border: 1px solid rgba(91,95,158,0.25); border-radius: 2px;
+  }
+
+  /* 核心标题区 */
+  .headline-section {
+    margin-top: 54px; max-width: 1280px;
+  }
+  .headline-cn {
+    font-family: 'Newsreader', 'Songti SC', 'Source Han Serif SC', serif;
+    font-weight: 300; font-size: 80px; line-height: 1.08; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 18px;
+  }
+  .headline-cn em {
+    font-style: italic; font-weight: 300; color: var(--em);
+  }
+  .headline-en {
+    font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 42px;
+    line-height: 1.15; letter-spacing: -0.02em; color: var(--ink-2);
+  }
+  .headline-en em {
+    font-style: italic; font-weight: 300; color: var(--em);
+  }
+
+  /* 中间主架构展示：六层解构网格 */
+  .main-grid {
+    margin-top: 52px; display: grid; grid-template-columns: 2fr 3fr; gap: 64px; align-items: start;
+  }
+  
+  .left-col {
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .accent-bar {
+    width: 3px; height: 72px; background: var(--accent);
+  }
+  .desc {
+    font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.65;
+    color: var(--ink-2); max-width: 440px;
+  }
+
+  .layers-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px;
+    background: rgba(243, 245, 248, 0.6); padding: 24px 28px;
+    border: 1px solid var(--hairline); border-radius: var(--radius);
+  }
+  .layer-item {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .layer-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; color: var(--accent);
+  }
+  .layer-name {
+    font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--ink);
+  }
+  .layer-sub {
+    font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: var(--ink-3);
+  }
+
+  /* 底部标注文档与城市序列 */
+  .foot {
+    margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink-3);
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--hairline); padding-top: 20px;
+  }
+  .foot-left { display: flex; gap: 28px; }
+  .foot-right { color: var(--ink-2); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <div class="poster">
+    <div class="pad">
+      <!-- 顶部眉题 -->
+      <div class="top-meta">
+        <div class="rubric">§ 01 · SKILL & TOOLCHAIN · STYLEDNA</div>
+        <div class="tag">OPEN SOURCE · V1.0.0</div>
+      </div>
+
+      <!-- 中英对照大标题 -->
+      <div class="headline-section">
+        <h1 class="headline-cn">解构笔触基因，<br /><em>让写作不再从零难产。</em></h1>
+        <div class="headline-en">Deconstructing Writing DNA. <em>Style Distillation & Synthesis.</em></div>
+      </div>
+
+      <!-- 中部布局：说明与六层特征网格 -->
+      <div class="main-grid">
+        <div class="left-col">
+          <div class="accent-bar"></div>
+          <p class="desc">
+            拒绝盲目模仿。将海量文章深度蒸馏为语言、结构、选题、素材、认知与视觉六层可度量资产，实现高保真度受控复刻。
+          </p>
+        </div>
+
+        <div class="layers-grid">
+          <div class="layer-item">
+            <span class="layer-tag">L1 · LANGUAGE</span>
+            <span class="layer-name">表层语言与词频</span>
+            <span class="layer-sub">句长分布 · 标点习惯 · 加粗密度</span>
+          </div>
+          <div class="layer-item">
+            <span class="layer-tag">L2 · STRUCTURE</span>
+            <span class="layer-name">文章架构与骨架</span>
+            <span class="layer-sub">开头 Hook · 论证架构 · 结尾收束</span>
+          </div>
+          <div class="layer-item">
+            <span class="layer-tag">L3 · TOPIC LOGIC</span>
+            <span class="layer-name">选题逻辑与切角</span>
+            <span class="layer-sub">时机决策 · 视角取舍 · 边界树</span>
+          </div>
+          <div class="layer-item">
+            <span class="layer-tag">L4 · SOURCE STRATEGY</span>
+            <span class="layer-name">素材与论据策略</span>
+            <span class="layer-sub">一手引用 · 权威对象 · 截图承重</span>
+          </div>
+          <div class="layer-item">
+            <span class="layer-tag">L5 · COGNITIVE FRAMES</span>
+            <span class="layer-name">认知框架与假设</span>
+            <span class="layer-sub">底层世界观 · 价值判断 · 核心命题</span>
+          </div>
+          <div class="layer-item">
+            <span class="layer-tag">L6 · VISUAL STYLE</span>
+            <span class="layer-name">排版与视觉呈现</span>
+            <span class="layer-sub">图文间距 · 标题层级 · 呈现节奏</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部系统脚注 -->
+      <div class="foot">
+        <div class="foot-left">
+          <span>DATE: 01.01.2026</span>
+          <span>№ 01 · SPEC</span>
+          <span>AUTONOMOUS AGENT SYSTEM</span>
+        </div>
+        <div class="foot-right">
+          <span>XuZhou · BeiJing · NanJing · SuZhou</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
