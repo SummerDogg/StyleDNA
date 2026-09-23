@@ -7,7 +7,7 @@
 
 `StyleDNA`（文风DNA / 笔触基因）是一套用于深度蒸馏作者写作风格、认知框架与视觉排版的 Agent Skill 与工程化工具链。它不是简单的“模仿某某语气”的单次浅层提示词，而是将多篇完整历史文章深度解构为可复用、可量化、可自检的“风格规则资产集”，并通过动态智能召回、分层上下文组装与量化质检机制，实现高保真度、去 AI 腔调的受控文风复刻。
 
----
+<img width="1600" height="329" alt="style-dna-cover 1" src="https://github.com/user-attachments/assets/c292c73e-28c8-4882-9af3-bb22f9b9c1ea" />
 
 ## 一、核心理念与痛点解决
 
